@@ -1,4 +1,5 @@
 #include <string>
+#include <vector>
 
 class Utils
 {
@@ -9,4 +10,5 @@ class Utils
             std::string output_cmd;
         };
         static Utils::ret_cmd exec_cmd(std::string cmd);
+        static std::vector<std::string> split(std::string str, std::string delimiter);
 };

@@ -27,3 +27,19 @@ Utils::ret_cmd Utils::exec_cmd(string cmd)
 
     return ret_data;
 };
+
+vector<string> Utils::split(string str, string delimiter)
+{
+    vector<string> elements;
+    size_t pos = 0;
+    std::string token;
+
+    while ((pos = str.find(delimiter)) != std::string::npos)
+    {
+        token = str.substr(0, pos);
+        elements.push_back(token);
+        str.erase(0, pos + delimiter.length());
+    }
+    elements.push_back(str);
+    return elements;
+};

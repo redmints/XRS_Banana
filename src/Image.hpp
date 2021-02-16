@@ -4,7 +4,7 @@ class Image
 {
     public:
         Image();
-        Image(std::string par_id);
+        Image(std::string par_repo, std::string par_tag);
 
         std::string getId();
         std::string getRepository();
