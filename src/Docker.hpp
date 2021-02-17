@@ -5,5 +5,5 @@ class Docker
 {
     public:
         static std::vector<Image> listImages();
-        //static std::vector<Container> listContainers();
+        static std::vector<Container> listContainers();
 };

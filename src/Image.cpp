@@ -10,6 +10,24 @@ Image::Image()
     m_id = "null";
 };
 
+Image::Image(string par_id)
+{
+    m_id = par_id;
+    string command = "docker images --format '{{.ID}}:{{.Repository}}:{{.Tag}}' | grep " + m_id;
+    Utils::ret_cmd img_infos = Utils::exec_cmd(command);
+    if(img_infos.ret_value == 0)
+    {
+        vector<string> tmp = Utils::split(img_infos.output_cmd, "\n");
+        vector<string> res = Utils::split(tmp[0], ":");
+        m_Repository = res[1];
+        m_Tag = res[2];
+    }
+    else
+    {
+        printf("Error while getting image information\n");
+    }
+};
+
 Image::Image(string par_repo, string par_tag)
 {
     m_Repository = par_repo;
@@ -39,4 +57,14 @@ Image::Image(string par_repo, string par_tag)
 string Image::getId()
 {
     return m_id;
+};
+
+string Image::getRepository()
+{
+    return m_Repository;
+};
+
+string Image::getTag()
+{
+    return m_Tag;
 };

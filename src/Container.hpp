@@ -4,14 +4,16 @@
 class Container
 {
     public:
+        Container(std::string par_id);
         Container(Image par_img);
         int start();
         int stop();
         int exec();
+        int rm();
 
         std::string getId();
         std::string getName();
-        std::string getImage();
+        Image       getImage();
         bool        getStatus();
 
     private:

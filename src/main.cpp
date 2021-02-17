@@ -10,12 +10,13 @@ int main(int argc, const char * argv[])
     //Image debian = Image("debian", "buster");
     //printf("%s\n", debian.getId().c_str());
 
-    //Container container = Container(debian);
-    //printf("%s\n", container.getId().c_str());
-    vector<Image> images = Docker::listImages();
-    for(int i = 0; i < images.size(); i++)
+    //Container container = Container("b60b33af9a0d");
+    //printf("%s\n", container.getImage().getRepository().c_str());
+
+    vector<Container> containers = Docker::listContainers();
+    for(int i = 0; i < containers.size(); i++)
     {
-        printf("%s\n", images[i].getId().c_str());
+        printf("%s\n", containers[i].getImage().getRepository().c_str());
     }
 
     return 0;
