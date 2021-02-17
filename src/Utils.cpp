@@ -23,7 +23,7 @@ Utils::ret_cmd Utils::exec_cmd(string cmd)
     }
 
     ret_data.ret_value = pclose(pipe);
-    ret_data.output_cmd = result;
+    ret_data.output_cmd = result.substr(0, result.size()-1);
 
     return ret_data;
 };

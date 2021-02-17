@@ -7,13 +7,13 @@ class Image
         Image(std::string par_id);
         Image(std::string par_repo, std::string par_tag);
 
-        std::string getId();
-        std::string getRepository();
-        std::string getTag();
-        int rm();
+        std::string get_id();
+        std::string get_repository();
+        std::string get_tag();
+        int         rm();
 
     private:
         std::string m_id;
-        std::string m_Repository;
-        std::string m_Tag;
+        std::string m_repository;
+        std::string m_tag;
 };

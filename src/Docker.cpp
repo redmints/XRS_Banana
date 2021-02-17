@@ -1,4 +1,3 @@
-#include "Utils.hpp"
 #include "Docker.hpp"
 #include <string>
 #include <array>
@@ -7,7 +6,7 @@
 
 using namespace std;
 
-vector<Image> Docker::listImages()
+vector<Image> Docker::list_images()
 {
     vector<Image> images;
     string command = "docker images --format '{{.ID}}'";
@@ -34,7 +33,7 @@ vector<Image> Docker::listImages()
     return images;
 };
 
-vector<Container> Docker::listContainers()
+vector<Container> Docker::list_containers()
 {
     vector<Container> containers;
     string command = "docker ps --format '{{.ID}}'";

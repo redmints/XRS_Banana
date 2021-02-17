@@ -1,23 +1,31 @@
 #include <iostream>
-#include "Utils.hpp"
 #include "Docker.hpp"
 #include <vector>
 
 using namespace std;
 
-int main(int argc, const char * argv[])
+void list_containers()
 {
-    //Image debian = Image("debian", "buster");
-    //printf("%s\n", debian.getId().c_str());
-
-    //Container container = Container("b60b33af9a0d");
-    //printf("%s\n", container.getImage().getRepository().c_str());
-
-    vector<Container> containers = Docker::listContainers();
+    vector<Container> containers = Docker::list_containers();
     for(int i = 0; i < containers.size(); i++)
     {
-        printf("%s\n", containers[i].getImage().getRepository().c_str());
+        printf("%s %s\n", containers[i].get_id().c_str(), containers[i].get_name().c_str());
     }
+}
+
+void list_images()
+{
+    vector<Image> images = Docker::list_images();
+    for(int i = 0; i < images.size(); i++)
+    {
+        printf("%s %s\n", images[i].get_id().c_str(), images[i].get_repository().c_str());
+    }
+}
+
+int main(int argc, const char * argv[])
+{
+    list_containers();
+    list_images();
 
     return 0;
 }
