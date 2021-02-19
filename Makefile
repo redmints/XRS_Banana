@@ -1,9 +1,22 @@
-all:
-	g++ -c src/Utils.cpp -o out/Utils.o
-	g++ -c src/Image.cpp -o out/Image.o
-	g++ -c src/Container.cpp -o out/Container.o
-	g++ -c src/Docker.cpp -o out/Docker.o
-	g++ -g -Wall -o out/genux out/*.o src/main.cpp
+MKDIR_P = mkdir -p
+OUT_DIR = out
+SRC_DIR = src
+BINARY = banana
+
+.PHONY: directories
+
+all: directories build
+
+directories: ${OUT_DIR}
+
+${OUT_DIR}:
+	${MKDIR_P} ${OUT_DIR}
+build:
+	g++ -c ${SRC_DIR}/Utils.cpp -o ${OUT_DIR}/Utils.o
+	g++ -c ${SRC_DIR}/Image.cpp -o ${OUT_DIR}/Image.o
+	g++ -c ${SRC_DIR}/Container.cpp -o ${OUT_DIR}/Container.o
+	g++ -c ${SRC_DIR}/Docker.cpp -o ${OUT_DIR}/Docker.o
+	g++ -g -Wall -o ${OUT_DIR}/${BINARY} ${OUT_DIR}/*.o ${SRC_DIR}/main.cpp
 clean:
-	$(RM) -rf out/*
-	$(RM) -rf src/*.gch
+	$(RM) -rf ${OUT_DIR}/*
+	$(RM) -rf ${SRC_DIR}/*.gch
