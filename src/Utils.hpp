@@ -11,4 +11,7 @@ class Utils
         };
         static Utils::ret_cmd           exec_cmd(std::string cmd);
         static std::vector<std::string> split(std::string str, std::string delimiter);
+        static void                     print_log(std::string msg);
+        static void                     print_ok(std::string msg);
+        static void                     print_err(std::string msg);
 };

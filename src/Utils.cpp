@@ -4,6 +4,10 @@
 
 using namespace std;
 
+#define KRED  "\x1B[31m"
+#define KGRN  "\x1B[32m"
+#define KYEL  "\x1B[33m"
+
 Utils::ret_cmd Utils::exec_cmd(string cmd)
 {
     Utils::ret_cmd ret_data;
@@ -42,4 +46,19 @@ vector<string> Utils::split(string str, string delimiter)
     }
     elements.push_back(str);
     return elements;
+};
+
+void Utils::print_log(string msg)
+{
+    printf("%s[DEBUG] %s\n", KYEL, msg.c_str());
+};
+
+void Utils::print_ok(string msg)
+{
+    printf("%s[OK] %s\n", KGRN, msg.c_str());
+};
+
+void Utils::print_err(string msg)
+{
+    printf("%s[ERROR] %s\n", KRED, msg.c_str());
 };
