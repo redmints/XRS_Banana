@@ -28,7 +28,7 @@ vector<Image> Docker::list_images()
     }
     else
     {
-        printf("Error while listing images\n");
+        Utils::print_err("Error while listing images");
     }
     return images;
 };
@@ -50,7 +50,7 @@ vector<Container> Docker::list_containers()
     }
     else
     {
-        printf("Error while listing containers\n");
+        Utils::print_err("Error while listing containers");
     }
     return containers;
 };

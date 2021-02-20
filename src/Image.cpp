@@ -24,7 +24,7 @@ Image::Image(string par_id)
     }
     else
     {
-        printf("Error while getting image information\n");
+        Utils::print_err("Error while getting image information");
     }
 };
 
@@ -44,12 +44,12 @@ Image::Image(string par_repo, string par_tag)
         }
         else
         {
-            printf("Error while checking IMAGE ID\n");
+            Utils::print_err("Error while checking IMAGE ID");
         }
     }
     else
     {
-        printf("Error while pulling image\n");
+        Utils::print_err("Error while pulling image");
     }
 };
 

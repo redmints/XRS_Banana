@@ -15,7 +15,7 @@ Container::Container(string par_id)
     }
     else
     {
-        printf("Error while getting container information\n");
+        Utils::print_err("Error while getting container information");
     }
 };
 
@@ -37,12 +37,12 @@ Container::Container(Image par_img)
         }
         else
         {
-            printf("Error while getting container information\n");
+            Utils::print_err("Error while getting container information");
         }
     }
     else
     {
-        printf("Error while creating container\n");
+        Utils::print_err("Error while creating container");
     }
 };
 
@@ -115,7 +115,7 @@ bool Container::get_status()
     }
     else
     {
-        printf("Error while getting container information\n");
+        Utils::print_err("Error while getting container information");
     }
     return status;
 };
