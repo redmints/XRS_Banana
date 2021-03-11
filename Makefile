@@ -16,7 +16,7 @@ build:
 	g++ -c ${SRC_DIR}/Image.cpp -o ${OUT_DIR}/Image.o
 	g++ -c ${SRC_DIR}/Container.cpp -o ${OUT_DIR}/Container.o
 	g++ -c ${SRC_DIR}/Docker.cpp -o ${OUT_DIR}/Docker.o
-	g++ -g -Wall -o ${OUT_DIR}/${BINARY} ${OUT_DIR}/*.o ${SRC_DIR}/main.cpp
+	g++ -std=c++14 -g -Wall -o ${OUT_DIR}/${BINARY} ${OUT_DIR}/*.o ${SRC_DIR}/main.cpp
 docu:
 	doxygen doc/Doxyfile; \
 	make -C doc/latex/;

@@ -1,6 +1,8 @@
+
 #include <iostream>
 #include "Docker.hpp"
 #include <vector>
+#include "../include/cpp-httplib/httplib.h"
 
 using namespace std;
 
@@ -24,8 +26,16 @@ void list_images()
 
 int main(int argc, const char * argv[])
 {
-    list_containers();
-    list_images();
+    //list_containers();
+    //list_images();
+
+    httplib::Server svr;
+
+    svr.Get("/", [](const httplib::Request &, httplib::Response &res) {
+      res.set_content("Hello World!", "text/plain");
+    });
+
+    svr.listen("127.0.0.1", 8888);
 
     return 0;
 }
