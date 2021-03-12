@@ -34,6 +34,8 @@ class Utils
         static Utils::ret_cmd           exec_cmd(std::string cmd);
         /// Splits a string by delimiter
         static std::vector<std::string> split(std::string str, std::string delimiter);
+        /// Read given file line by line
+        static std::vector<std::string> read_file(std::string path);
         /// Prints log debug message
         static void                     print_log(std::string msg);
         /// Prints success message

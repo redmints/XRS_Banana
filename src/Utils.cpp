@@ -1,6 +1,7 @@
 #include "Utils.hpp"
 #include <string>
 #include <array>
+#include <fstream>
 
 using namespace std;
 
@@ -46,6 +47,26 @@ vector<string> Utils::split(string str, string delimiter)
     }
     elements.push_back(str);
     return elements;
+};
+
+vector<string> Utils::read_file(string path)
+{
+    vector<string> lines;
+    ifstream file(path.c_str());
+    if (file.is_open())
+    {
+        string line;
+        while (getline(file, line))
+        {
+            lines.push_back(line);
+        }
+        file.close();
+    }
+    else
+    {
+        print_err("Can't open file");
+    }
+    return lines;
 };
 
 void Utils::print_log(string msg)
