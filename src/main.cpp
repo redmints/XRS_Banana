@@ -1,6 +1,6 @@
 
 #include <iostream>
-#include "Docker.hpp"
+#include "docker/Docker.hpp"
 #include <vector>
 #include "../include/cpp-httplib/httplib.h"
 
@@ -31,8 +31,17 @@ int main(int argc, const char * argv[])
 
     httplib::Server svr;
 
-    svr.Get("/", [](const httplib::Request &, httplib::Response &res) {
-      res.set_content("Hello World!", "text/plain");
+    string content = "";
+    vector<string> vec = Utils::read_file("src/views/index.html");
+    for(int i = 0; i < vec.size(); i++)
+    {
+        content += vec[i];
+    }
+    
+    svr.Get("/", [&content](const httplib::Request &req, httplib::Response &res)
+    {
+        Utils::log("Request from "+req.remote_addr);
+        res.set_content(content, "text/html");
     });
 
     svr.listen("127.0.0.1", 8888);

@@ -36,6 +36,8 @@ class Utils
         static std::vector<std::string> split(std::string str, std::string delimiter);
         /// Read given file line by line
         static std::vector<std::string> read_file(std::string path);
+        /// Send log message
+        static void                     log(std::string msg);
         /// Prints log debug message
         static void                     print_log(std::string msg);
         /// Prints success message

@@ -1,5 +1,5 @@
 #include "Image.hpp"
-#include "Utils.hpp"
+#include "../Utils.hpp"
 #include <string>
 using namespace std;
 

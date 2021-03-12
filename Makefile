@@ -13,9 +13,9 @@ ${OUT_DIR}:
 	${MKDIR_P} ${OUT_DIR}
 build:
 	g++ -c ${SRC_DIR}/Utils.cpp -o ${OUT_DIR}/Utils.o
-	g++ -c ${SRC_DIR}/Image.cpp -o ${OUT_DIR}/Image.o
-	g++ -c ${SRC_DIR}/Container.cpp -o ${OUT_DIR}/Container.o
-	g++ -c ${SRC_DIR}/Docker.cpp -o ${OUT_DIR}/Docker.o
+	g++ -c ${SRC_DIR}/docker/Image.cpp -o ${OUT_DIR}/Image.o
+	g++ -c ${SRC_DIR}/docker/Container.cpp -o ${OUT_DIR}/Container.o
+	g++ -c ${SRC_DIR}/docker/Docker.cpp -o ${OUT_DIR}/Docker.o
 	g++ -std=c++14 -g -Wall -o ${OUT_DIR}/${BINARY} ${OUT_DIR}/*.o ${SRC_DIR}/main.cpp
 docu:
 	doxygen doc/Doxyfile; \
