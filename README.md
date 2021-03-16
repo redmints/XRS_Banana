@@ -1,6 +1,20 @@
 # Banana
 
-###Installation
+### Introduction
+
+Banana is a web framework in C++ based on MVC achitecture. A docker API is available too in this repo.
+
+Examples of use are in the main.
+
+### Dependencies
+
+First of all, you will have to install :
+
+- g++
+- make
+- pdflatex (only if you want to generate documentation)
+
+### Compilation
 ----
 First, you have to clone the project and submodules :
 
@@ -12,8 +26,6 @@ First, you have to clone the project and submodules :
 
 `$ git submodule update`
 
-`$ git submodule init`
-
 Then, if you want to build, please run :
 
 `$ make build`
@@ -21,3 +33,9 @@ Then, if you want to build, please run :
 Binary is available in out/ directory :
 
 `$ ./out/banana`
+
+You also can generate documentation using :
+
+`$ make docu`
+
+And then, find PDF generated in doc/ directory.
