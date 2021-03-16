@@ -6,6 +6,7 @@ BINARY = banana
 .PHONY: directories
 
 all: directories build docu
+binary: directories build
 
 directories: ${OUT_DIR}
 
@@ -16,7 +17,7 @@ build:
 	g++ -c ${SRC_DIR}/docker/Image.cpp -o ${OUT_DIR}/Image.o
 	g++ -c ${SRC_DIR}/docker/Container.cpp -o ${OUT_DIR}/Container.o
 	g++ -c ${SRC_DIR}/docker/Docker.cpp -o ${OUT_DIR}/Docker.o
-	g++ -std=c++14 -g -Wall -o ${OUT_DIR}/${BINARY} ${OUT_DIR}/*.o ${SRC_DIR}/main.cpp
+	g++ -std=c++14 -lpthread -g -Wall -o ${OUT_DIR}/${BINARY} ${OUT_DIR}/*.o ${SRC_DIR}/main.cpp
 docu:
 	doxygen doc/Doxyfile; \
 	make -C doc/latex/;

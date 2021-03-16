@@ -12,6 +12,7 @@ First of all, you will have to install :
 
 - g++
 - make
+- doxygen (only if you want to generate documentation)
 - pdflatex (only if you want to generate documentation)
 
 ### Compilation
@@ -28,7 +29,7 @@ First, you have to clone the project and submodules :
 
 Then, if you want to build, please run :
 
-`$ make build`
+`$ make binary`
 
 Binary is available in out/ directory :
 

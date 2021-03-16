@@ -3,6 +3,7 @@
 #include <array>
 #include <vector>
 #include <sstream>
+#include <algorithm>
 
 using namespace std;
 
@@ -16,9 +17,9 @@ vector<Image> Docker::list_images()
         vector<string> tmp;
         istringstream str(images_list.output_cmd);
         string line;
-        while (std::getline(str, line))
+        while (getline(str, line))
         {
-            if(std::find(tmp.begin(), tmp.end(), line) == tmp.end())
+            if(find(tmp.begin(), tmp.end(), line) == tmp.end())
             {
                 Image img = Image(line);
                 images.push_back(img);
