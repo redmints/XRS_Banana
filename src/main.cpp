@@ -31,16 +31,17 @@ int main(int argc, const char * argv[])
 
     httplib::Server svr;
 
-    string content = "";
-    vector<string> vec = Utils::read_file("src/views/index.html");
-    for(long unsigned int i = 0; i < vec.size(); i++)
-    {
-        content += vec[i];
-    }
-    
-    svr.Get("/", [&content](const httplib::Request &req, httplib::Response &res)
+    svr.Get("/", [](const httplib::Request &req, httplib::Response &res)
     {
         Utils::log("Request from "+req.remote_addr);
+        
+        string content = "";
+        vector<string> vec = Utils::read_file("src/views/index.html");
+        for(long unsigned int i = 0; i < vec.size(); i++)
+        {
+            content += vec[i];
+        }
+
         res.set_content(content, "text/html");
     });
 
