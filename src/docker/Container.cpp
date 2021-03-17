@@ -21,7 +21,6 @@ Container::Container(string par_id)
 
 Container::Container(Image par_img)
 {
-    this->m_image = Image();
     this->m_image = par_img;
     string command = "docker run -d -it " + this->m_image.get_id();
     Utils::ret_cmd cont_create = Utils::exec_cmd(command);

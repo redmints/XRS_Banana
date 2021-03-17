@@ -1,13 +1,15 @@
+
 #include <iostream>
-#include "Docker.hpp"
+#include "docker/Docker.hpp"
 #include <vector>
+#include "../include/cpp-httplib/httplib.h"
 
 using namespace std;
 
 void list_containers()
 {
     vector<Container> containers = Docker::list_containers();
-    for(int i = 0; i < containers.size(); i++)
+    for(long unsigned int i = 0; i < containers.size(); i++)
     {
         printf("%s %s\n", containers[i].get_id().c_str(), containers[i].get_name().c_str());
     }
@@ -16,7 +18,7 @@ void list_containers()
 void list_images()
 {
     vector<Image> images = Docker::list_images();
-    for(int i = 0; i < images.size(); i++)
+    for(long unsigned int i = 0; i < images.size(); i++)
     {
         printf("%s %s\n", images[i].get_id().c_str(), images[i].get_repository().c_str());
     }
@@ -24,8 +26,26 @@ void list_images()
 
 int main(int argc, const char * argv[])
 {
-    list_containers();
-    list_images();
+    //list_containers();
+    //list_images();
+
+    httplib::Server svr;
+
+    svr.Get("/", [](const httplib::Request &req, httplib::Response &res)
+    {
+        Utils::log("Request from "+req.remote_addr);
+        
+        string content = "";
+        vector<string> vec = Utils::read_file("src/views/index.html");
+        for(long unsigned int i = 0; i < vec.size(); i++)
+        {
+            content += vec[i];
+        }
+
+        res.set_content(content, "text/html");
+    });
+
+    svr.listen("127.0.0.1", 8888);
 
     return 0;
 }

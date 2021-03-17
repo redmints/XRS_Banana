@@ -1,6 +1,8 @@
 #include "Utils.hpp"
 #include <string>
 #include <array>
+#include <fstream>
+#include <ctime>
 
 using namespace std;
 
@@ -46,6 +48,43 @@ vector<string> Utils::split(string str, string delimiter)
     }
     elements.push_back(str);
     return elements;
+};
+
+vector<string> Utils::read_file(string path)
+{
+    vector<string> lines;
+    ifstream file(path.c_str());
+    if (file.is_open())
+    {
+        string line;
+        while (getline(file, line))
+        {
+            lines.push_back(line);
+        }
+        file.close();
+    }
+    else
+    {
+        print_err("Can't open file");
+    }
+    return lines;
+};
+
+void Utils::log(string msg)
+{
+    ofstream file("./banana.log", ios_base::app);
+    if(file.is_open())
+    {
+        time_t now = time(0);
+        tm *ltm = localtime(&now);
+        string to_log = '['+to_string(ltm->tm_hour)+':'+to_string(ltm->tm_min)+':'+to_string(ltm->tm_sec)+"] "+msg+"\n";
+        file << to_log.c_str();
+        file.close();
+    }
+    else
+    {
+        Utils::print_err("Cannot write log");
+    }
 };
 
 void Utils::print_log(string msg)
