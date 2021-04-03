@@ -4,6 +4,8 @@
 #include <vector>
 #include "../include/cpp-httplib/httplib.h"
 
+#include "controllers/accueil.hpp"
+
 using namespace std;
 
 void list_containers()
@@ -34,16 +36,21 @@ int main(int argc, const char * argv[])
     svr.Get("/", [](const httplib::Request &req, httplib::Response &res)
     {
         Utils::log("Request from "+req.remote_addr);
-        
-        string content = "";
-        vector<string> vec = Utils::read_file("src/views/index.html");
-        for(long unsigned int i = 0; i < vec.size(); i++)
-        {
-            content += vec[i];
-        }
-
-        res.set_content(content, "text/html");
+        Utils::log("Request from "+to_string(req.remote_port));
+        res.set_content(accueil::get(req.params), "text/html");
     });
+
+    svr.Post("/", [](const httplib::Request &req, httplib::Response &res)
+    {
+        Utils::log("Request from "+req.remote_addr);
+        res.set_content(accueil::post(req.params), "text/html");
+    });
+
+    auto ret = svr.set_mount_point("/", "./public");
+    if(!ret)
+    {
+        Utils::print_err("Error while mounting public directory");
+    }
 
     svr.listen("127.0.0.1", 8888);
 

@@ -87,6 +87,17 @@ void Utils::log(string msg)
     }
 };
 
+string Utils::view(string name)
+{
+    string content;
+    vector<string> vec = Utils::read_file("src/views/"+name+".html");
+    for(long unsigned int i = 0; i < vec.size(); i++)
+    {
+        content += vec[i];
+    }
+    return content;
+};
+
 void Utils::print_log(string msg)
 {
     printf("%s[DEBUG] %s\n", KYEL, msg.c_str());

@@ -1,40 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
-<style>
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-th, td {
-  padding: 5px;
-}
-</style>
-</head>
-<body>
-
-<table style="width:100%">
-  <tr>
-    <th>Firstname</th>
-    <th>Lastname</th>
-    <th>Age</th>
-  </tr>
-  <tr>
-    <td>Jill</td>
-    <td>Smith</td>
-    <td>{{AGE}}</td>
-  </tr>
-  <tr>
-    <td>Eve</td>
-    <td>Jackson</td>
-    <td>94</td>
-  </tr>
-  <tr>
-    <td>John</td>
-    <td>Doe</td>
-    <td>80</td>
-  </tr>
-</table>
-
-</body>
+    <head>
+     <link rel="stylesheet" href="style.css">
+     <title>{{Test}}</title>
+    </head>
+    <body>
+        <form action="/" method="post" class="form-example">
+          <div class="form-example">
+            <label for="name">Enter your name: </label>
+            <input type="text" name="name" id="name" required>
+          </div>
+          <div class="form-example">
+            <label for="email">Enter your email: </label>
+            <input type="email" name="email" id="email" required>
+          </div>
+          <div class="form-example">
+            <input type="submit" value="Subscribe!">
+          </div>
+        </form>
+    </body>
 </html>
