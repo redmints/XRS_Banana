@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <map>
+#include "../../include/inja.hpp"
 
 class accueil
 {

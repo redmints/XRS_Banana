@@ -20,6 +20,7 @@
 
 #include <string>
 #include <vector>
+#include "../include/inja.hpp"
 
 class Utils
 {
@@ -37,7 +38,7 @@ class Utils
         /// Read given file line by line
         static std::vector<std::string> read_file(std::string path);
         /// Compute view using given variables
-        static std::string              view(std::string name);
+        static std::string              view(std::string name, nlohmann::json data);
         /// Send log message
         static void                     log(std::string msg);
         /// Prints log debug message

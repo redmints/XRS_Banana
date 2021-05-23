@@ -5,6 +5,8 @@
 #include <ctime>
 
 using namespace std;
+using namespace inja;
+using json = nlohmann::json;
 
 #define KRED  "\x1B[31m"
 #define KGRN  "\x1B[32m"
@@ -87,15 +89,11 @@ void Utils::log(string msg)
     }
 };
 
-string Utils::view(string name)
+string Utils::view(string name, json data)
 {
-    string content;
-    vector<string> vec = Utils::read_file("src/views/"+name+".html");
-    for(long unsigned int i = 0; i < vec.size(); i++)
-    {
-        content += vec[i];
-    }
-    return content;
+    Environment env;
+    Template temp = env.parse_template("src/views/"+name+".html");
+    return env.render(temp, data);
 };
 
 void Utils::print_log(string msg)

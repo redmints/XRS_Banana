@@ -6,6 +6,8 @@
 #include "controllers/accueil.hpp"
 
 using namespace std;
+using namespace inja;
+using json = nlohmann::json;
 
 int main(int argc, const char * argv[])
 {
