@@ -21,6 +21,8 @@
 #include <string>
 #include <vector>
 #include "../include/inja.hpp"
+#include "../include/cpp-httplib/httplib.h"
+#include "../include/jwt/jwt.hpp"
 
 class Utils
 {
@@ -39,6 +41,10 @@ class Utils
         static std::vector<std::string> read_file(std::string path);
         /// Compute view using given variables
         static std::string              view(std::string name, nlohmann::json data);
+        /// Setting session by http header
+        static void                     set_session(httplib::Response* res, std::string value);
+        /// Getting session by http header
+        static std::string              get_session(const httplib::Request* req);
         /// Send log message
         static void                     log(std::string msg);
         /// Prints log debug message

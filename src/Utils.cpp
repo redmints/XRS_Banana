@@ -6,6 +6,8 @@
 
 using namespace std;
 using namespace inja;
+using namespace httplib;
+using namespace jwt::params;
 using json = nlohmann::json;
 
 #define KRED  "\x1B[31m"
@@ -94,6 +96,25 @@ string Utils::view(string name, json data)
     Environment env;
     Template temp = env.parse_template("src/views/"+name+".html");
     return env.render(temp, data);
+};
+
+void Utils::set_session(Response* res, string value)
+{
+    auto key = "f4212b127a";
+    jwt::jwt_object obj{algorithm("HS256"), payload({{"some": "payload"}}), secret(key)};
+    string token = obj.signature();
+    
+    res->set_header(token.c_str(), value.c_str());
+};
+
+string Utils::get_session(const Request* req)
+{
+    string ret = "";
+    if(req->has_header("Cookie"))
+    {
+        ret = req->get_header_value("Cookie");
+    }
+    return ret;
 };
 
 void Utils::print_log(string msg)
