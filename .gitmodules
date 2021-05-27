@@ -1,3 +1,6 @@
 [submodule "include/cpp-httplib"]
 	path = include/cpp-httplib
 	url = https://github.com/yhirose/cpp-httplib.git
+[submodule "include/jwt-cpp"]
+	path = include/jwt-cpp
+	url = git@github.com:Thalhammer/jwt-cpp.git

@@ -22,7 +22,7 @@
 #include <vector>
 #include "../include/inja.hpp"
 #include "../include/cpp-httplib/httplib.h"
-#include "../include/jwt/jwt.hpp"
+#include "../include/jwt-cpp/include/jwt-cpp/jwt.h"
 
 class Utils
 {
