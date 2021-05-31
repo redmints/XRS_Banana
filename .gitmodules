@@ -4,6 +4,3 @@
 [submodule "include/jwt-cpp"]
 	path = include/jwt-cpp
 	url = https://github.com/Thalhammer/jwt-cpp.git
-[submodule "include/inja"]
-	path = include/inja
-	url = https://github.com/pantor/inja.git
