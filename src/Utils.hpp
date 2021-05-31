@@ -20,7 +20,7 @@
 
 #include <string>
 #include <vector>
-#include "../include/inja.hpp"
+#include "../include/inja/single_include/inja/inja.hpp"
 #include "../include/cpp-httplib/httplib.h"
 #include "../include/jwt-cpp/include/jwt-cpp/jwt.h"
 

@@ -2,7 +2,7 @@
 #include <vector>
 #include <string>
 #include <map>
-#include "../../include/inja.hpp"
+#include "../../include/inja/single_include/inja/inja.hpp"
 #include "../../include/cpp-httplib/httplib.h"
 
 class accueil
