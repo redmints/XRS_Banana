@@ -3,7 +3,7 @@
 	url = https://github.com/yhirose/cpp-httplib.git
 [submodule "include/jwt-cpp"]
 	path = include/jwt-cpp
-	url = git@github.com:Thalhammer/jwt-cpp.git
-[submodule "include/--force"]
-	path = include/--force
-	url = git@github.com:pantor/inja.git
+	url = https://github.com/Thalhammer/jwt-cpp.git
+[submodule "include/inja"]
+	path = include/inja
+	url = https://github.com/pantor/inja.git
