@@ -1,0 +1,13 @@
+diff --git a/include/jwt-cpp/jwt.h b/include/jwt-cpp/jwt.h
+index edd0891..9ea3ddf 100644
+--- a/include/jwt-cpp/jwt.h
++++ b/include/jwt-cpp/jwt.h
+@@ -5,7 +5,7 @@
+ #ifndef PICOJSON_USE_INT64
+ #define PICOJSON_USE_INT64
+ #endif
+-#include "picojson/picojson.h"
++#include "../picojson/picojson.h"
+ #endif
+ 
+ #ifndef JWT_DISABLE_BASE64
