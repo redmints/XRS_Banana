@@ -10,8 +10,12 @@ string accueil::get(const Request* req, Response* res)
 {
     json data;
     data["name"] = "world";
-    Utils::set_session(res, "banana");
-    printf("%s\n", Utils::get_session(req).c_str());
+
+    map<string, string> session;
+    session["id"] = "56";
+    Utils::set_session(res, session);
+
+    printf("%s\n", Utils::get_session(req, "id").c_str());
     return Utils::view("index", data);
 };
 

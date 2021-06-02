@@ -97,23 +97,31 @@ string Utils::view(string name, json data)
     return env.render(temp, data);
 };
 
-void Utils::set_session(Response* res, string value)
+void Utils::set_session(Response* res, map<string, string> payload)
 {
-    string token = jwt::create()
-    .set_issuer("auth0")
-    .set_type("JWS")
-    .set_payload_claim("sample", jwt::claim(std::string("test")))
-    .sign(jwt::algorithm::hs256{"secret"});
+    auto maker = jwt::create().set_issuer("auth0").set_type("JWS");
+    for(auto& element : payload)
+    {
+        maker.set_payload_claim(element.first, jwt::claim(element.second));
+    }
+    string token = maker.sign(jwt::algorithm::hs256{"secret"});
 
-    res->set_header(token.c_str(), value.c_str());
+    res->set_header("Set-Cookie", token.c_str());
 };
 
-string Utils::get_session(const Request* req)
+string Utils::get_session(const Request* req, string key)
 {
     string ret = "";
     if(req->has_header("Cookie"))
     {
-        ret = req->get_header_value("Cookie");
+        auto verifier = jwt::verify().allow_algorithm(jwt::algorithm::hs256{"secret"}).with_issuer("auth0");
+        string token = req->get_header_value("Cookie");
+        auto decode = jwt::decode(token);
+        verifier.verify(decode);
+        if(decode.has_payload_claim(key))
+        {
+            ret = decode.get_payload_claim(key).as_string();
+        }
     }
     return ret;
 };
