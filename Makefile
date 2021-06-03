@@ -15,7 +15,7 @@ ${OUT_DIR}:
 build:
 	g++ -std=c++11 -c ${SRC_DIR}/Utils.cpp -o ${OUT_DIR}/Utils.o
 	g++ -std=c++11 -c ${SRC_DIR}/controllers/accueil.cpp -o ${OUT_DIR}/accueil.o
-	g++ -std=c++11 -lpthread -g -Wall -o ${OUT_DIR}/${BINARY} ${OUT_DIR}/*.o ${SRC_DIR}/main.cpp
+	g++ -std=c++11 -lpthread -lcrypto -g -Wall -o ${OUT_DIR}/${BINARY} ${OUT_DIR}/*.o ${SRC_DIR}/main.cpp
 docu:
 	doxygen doc/Doxyfile; \
 	make -C doc/latex/;

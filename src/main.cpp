@@ -6,8 +6,6 @@
 #include "controllers/accueil.hpp"
 
 using namespace std;
-using namespace inja;
-using json = nlohmann::json;
 
 int main(int argc, const char * argv[])
 {
@@ -17,13 +15,13 @@ int main(int argc, const char * argv[])
     {
         Utils::log("Request from "+req.remote_addr);
         Utils::log("Request from "+to_string(req.remote_port));
-        res.set_content(accueil::get(req.params), "text/html");
+        res.set_content(accueil::get(&req, &res), "text/html");
     });
 
     svr.Post("/", [](const httplib::Request &req, httplib::Response &res)
     {
         Utils::log("Request from "+req.remote_addr);
-        res.set_content(accueil::post(req.params), "text/html");
+        res.set_content(accueil::post(&req, &res), "text/html");
     });
 
     auto ret = svr.set_mount_point("/", "./public");
