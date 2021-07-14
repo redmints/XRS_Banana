@@ -2,9 +2,7 @@
 
 ### Introduction
 
-Banana is a web framework in C++ based on MVC achitecture. A docker API is available too in this repo.
-
-Examples of use are in the main.
+Banana is a web framework in C++ based on MVC achitecture.
 
 ### Dependencies
 
@@ -12,6 +10,7 @@ First of all, you will have to install :
 
 - g++
 - make
+- libssl-dev
 - doxygen (only if you want to generate documentation)
 - pdflatex (only if you want to generate documentation)
 
@@ -26,6 +25,16 @@ First, you have to clone the project and submodules :
 `$ git submodule init`
 
 `$ git submodule update`
+
+Then, please apply patches to git submodules :
+
+`$ cd include/jwt-cpp`
+
+`$ git apply ../jwt-cpp.patch`
+
+`$ cd ../inja`
+
+`$ git apply ../inja.patch`
 
 Then, if you want to build, please run :
 
