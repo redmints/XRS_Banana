@@ -30,7 +30,7 @@ int main(int argc, const char * argv[])
         Utils::print_err("Error while mounting public directory");
     }
 
-    svr.listen("127.0.0.1", 8888);
+    svr.listen("0.0.0.0", 80);
 
     return 0;
 }
